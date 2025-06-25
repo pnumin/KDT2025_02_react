@@ -1,5 +1,7 @@
 import MyDiv3 from "./MyDiv3"
-export default function MyDiv2() {
+import { CgChevronRight } from "react-icons/cg";
+
+export default function MyDiv2(props) {
   return (
     <div className="w-9/10 h-4/5 bg-amber-700
                     flex flex-col items-center
@@ -7,9 +9,9 @@ export default function MyDiv2() {
                     text-white font-bold">
       <div className = "w-9/10 flex justify-start
                         mb-5"> 
-        MyDiv2
+        {props.a} <CgChevronRight className="text-4xl"/> {props.b}
       </div>
-      <MyDiv3 />
+      <MyDiv3 x={props.a} y={props.b} z={props.c} />
     </div>
   )
 }
