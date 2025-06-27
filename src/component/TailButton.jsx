@@ -5,10 +5,17 @@ export default function TailButton({caption, color, onHandle}) {
     "orange" : "bg-orange-800",
     "lime" : "bg-lime-800"
   }
+
+  const bgHover = {
+    "blue" : "hover:bg-blue-600",
+    "orange" : "hover:bg-orange-600",
+    "lime" : "hover:bg-lime-600"
+  }
+
   return (
-    <button className={`p-4 rounded-xl text-white
+    <button className={`mx-2 p-4 rounded-xl text-white
                        hover:cursor-pointer hover:font-bold
-                      ${bg[color]}`}
+                      ${bg[color]} ${bgHover[color]}`}
             onClick={onHandle}>
       {caption}
     </button>
