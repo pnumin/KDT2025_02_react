@@ -4,7 +4,8 @@ export default function MyToggleBox({color}) {
   const [flag, setFlag] = useState(false) ;
   const bg = {
     'blue' : "bg-blue-400" ,
-    'orange' : "bg-orange-400"
+    'orange' : "bg-orange-400",
+    'lime' : "bg-lime-400"
   }
   const handleToggle = () => {
     setFlag(!flag) ;
