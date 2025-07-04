@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 export default function BoxOffice() {
   const [tdata, setTdata] = useState([]) ;
   const [tag, setTag] = useState([]) ;
+  const [info, setInfo] = useState('') ;
 
   const getFetchData = async () => {
     const apikey = import.meta.env.VITE_MV_API;
@@ -14,6 +15,11 @@ export default function BoxOffice() {
     setTdata(data.boxOfficeResult.dailyBoxOfficeList); 
   }
 
+  const handleItem = (item) => {
+    console.log(item)
+    setInfo(`[${item.movieNm}] 개봉일 : ${item.openDt}, 상영스크린수 : ${item.scrnCnt}, 상영횟수 : ${item.showCnt}`)
+  }
+
   useEffect(() => {
     getFetchData();
   }, []);
@@ -21,8 +27,9 @@ export default function BoxOffice() {
   useEffect(()=>{
     console.log(tdata)
     let tm = tdata.map(item => 
-            <tr  key = {item.movieCd}
-                  className="bg-white border-b border-gray-200
+            <tr key = {item.movieCd}
+                onClick={() => handleItem(item)}
+                className="bg-white border-b border-gray-200
                              hover:bg-gray-100 hover:text-blue-700 hover:cursor-pointer">
               <th scope="row" className="px-3 py-4 font-medium text-gray-900 whitespace-nowrap">
                 {item.rank}
@@ -86,8 +93,9 @@ export default function BoxOffice() {
           </tbody>
         </table>
       </div>
-      <div className="w-full h-10 bg-amber-100 mt-5">
-
+      <div className="w-full h-10 bg-amber-100 mt-5
+                      flex justify-center items-center text-blue-800 font-bold">
+          {info}
       </div>
 
     </div>
