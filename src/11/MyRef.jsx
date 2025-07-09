@@ -1,5 +1,5 @@
 import TailButton from "../component/TailButton" 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 export default function MyRef() {
   const n1Ref = useRef() ;
   const n2Ref = useRef() ;
@@ -20,8 +20,13 @@ export default function MyRef() {
       case '/' : n3 = n1 / n2 ; break ;
     }
     n3Ref.current.value = n3 ;
+    n1Ref.current.focus() ;
   } 
 
+  useEffect(()=>{
+    n1Ref.current.focus() ;
+
+  }, []) ;
   return (
     <div className="w-9/10 bg-lime-50 p-5 flex justify-center">
        <form className="flex justify-center">

@@ -12,7 +12,9 @@ import MyToggle from './07/MyToggle'
 import MyEffect from './08/MyEffect'
 import BoxOffice from './09/BoxOffice'
 import Traffic from './10/Traffic'
-
+import MyRef from './11/MyRef'
+import Gallery from './12/Gallery'
+import Festival from './13/Festival'
 function App() {
    
   return ( 
@@ -31,7 +33,7 @@ function App() {
       <main className="w-full flex-grow
                        overflow-y-auto py-10
                        flex flex-col justify-start items-center">
-        <Traffic />
+        <Festival />
       </main>
       <footer className="w-full min-h-20
                         bg-black text-white

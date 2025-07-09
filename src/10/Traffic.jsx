@@ -98,7 +98,7 @@ export default function Traffic() {
                             {item}
                           </div>
                           <div className="text-amber-800
-                                          p-2
+                                          p-2 
                                           font-bold">
                               {parseInt(info[item]).toLocaleString()} 
                           </div>
@@ -121,7 +121,7 @@ export default function Traffic() {
                     />
      } 
      <div className="w-full bg-lime-50 p-5
-                     flex justify-between items-center mt-10">
+                     grid grid-cols-5 mt-10">
      {infoTag}
      </div>
     </div>
