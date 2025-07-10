@@ -1,11 +1,15 @@
 import TailButton from "../component/TailButton"
 import getxy from './getxy.json'
 import { useRef, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+
 export default function Fcst() {
   const dtRef = useRef();
   const areaRef = useRef();
   const area = getxy.map(item => item["1단계"] ) ;
   // console.log(area)
+
+  const navigate = useNavigate() ;
 
   const handleLink = (gubun) => {
     let tm = getxy.filter(item => item["1단계"] == areaRef.current.value)[0] ;
@@ -13,6 +17,10 @@ export default function Fcst() {
     let y = tm["격자 Y"]
     console.log(x, y) 
     console.log(gubun, dtRef.current.value ,areaRef.current.value)
+
+    let url = `/fcstlist?gubun=${gubun}&dt=${dtRef.current.value}`;
+    url = `${url}&area=${areaRef.current.value}&x=${x}&y=${y}` ;
+    navigate(url) ;
   }
 
   useEffect(() => {

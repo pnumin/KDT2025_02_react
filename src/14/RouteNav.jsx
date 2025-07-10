@@ -14,7 +14,7 @@ export default function RouteNav() {
           Page1
         </div>
       </Link>
-      <Link to="p2">
+      <Link to="/p2?item2=m">
         <div className="p-4 m-2 border font-bold hover:bg-amber-200
                      border-amber-800 rounded bg-amber-50">
           Page2
