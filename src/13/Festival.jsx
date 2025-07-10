@@ -12,7 +12,7 @@ export default function Festival() {
     tm = tm.map(item => <TailCard key={item.UC_SEQ}
                                             imgurl = {item.MAIN_IMG_THUMB}
                                             title = {item.MAIN_TITLE.split('(')[0]}
-                                            subtitle = {item.TITLE}
+                                            subtitle = {item.USAGE_DAY_WEEK_AND_TIME}
                                             content = {item.MAIN_PLACE}
                                          />);
     setTag(tm)

@@ -15,6 +15,8 @@ import Traffic from './10/Traffic'
 import MyRef from './11/MyRef'
 import Gallery from './12/Gallery'
 import Festival from './13/Festival'
+import Fcst from './15/Fcst'
+
 function App() {
    
   return ( 
@@ -33,7 +35,7 @@ function App() {
       <main className="w-full flex-grow
                        overflow-y-auto py-10
                        flex flex-col justify-start items-center">
-        <Festival />
+        <Fcst />
       </main>
       <footer className="w-full min-h-20
                         bg-black text-white
