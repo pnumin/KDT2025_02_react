@@ -16,6 +16,7 @@ import MyRef from './11/MyRef'
 import Gallery from './12/Gallery'
 import Festival from './13/Festival'
 import Fcst from './15/Fcst'
+import RouteMain from './14/RouteMain'
 
 function App() {
    
@@ -35,7 +36,7 @@ function App() {
       <main className="w-full flex-grow
                        overflow-y-auto py-10
                        flex flex-col justify-start items-center">
-        <Fcst />
+        <RouteMain />
       </main>
       <footer className="w-full min-h-20
                         bg-black text-white
