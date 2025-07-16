@@ -1,13 +1,9 @@
 import TailButton from "../component/TailButton"
-export default function MyDiv3({n, setN}) {
+import { useAtom } from "jotai"
+import { cntAtom, cntAtom2 } from "./CntAtom"
+export default function MyDiv3() {
+  const [n, setN] = useAtom(cntAtom) ;
 
-  const handleUp = () => {
-    setN(n + 1) ;
-  }
-
-  const handleDown = () => {
-    setN(n - 1) ;
-  }
   return (
     <div className="w-full h-full bg-amber-300
                     flex flex-col justify-center items-center
@@ -19,10 +15,10 @@ export default function MyDiv3({n, setN}) {
       <div className="w-8/10 h-3/5 grid grid-cols-2">
       <TailButton  caption = "증가"
                             color = "lime" 
-                            onHandle = {handleUp} />
+                            onHandle = {() => setN(n + 1)} />
       <TailButton  caption = "감소"
                             color = "lime" 
-                            onHandle = {handleDown} />
+                            onHandle = {() => setN(n - 1)} />
       </div>
     </div>
   )

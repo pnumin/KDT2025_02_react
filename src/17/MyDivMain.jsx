@@ -1,12 +1,12 @@
 import MyDiv from "./MyDiv"
-import { useState, useEffect} from "react"
-export default function MyDivMain() {
-  const [ n, setN ] = useState(0) ;
-  const [ n2, setN2 ] = useState(0) ;
+// import { useState, useEffect} from "react"
+import { useAtom } from "jotai";
+import { cntAtom, cntAtom2} from "./CntAtom" ;
 
-  useEffect(() => {
-    setN2(n * 2)
-  } , [n]) ;
+export default function MyDivMain() {
+  const [ n ] = useAtom(cntAtom) ;
+  const [ n2 ] = useAtom(cntAtom2) ;
+
   return (
     <div className="w-2/3 h-4/5 bg-amber-900
                     flex flex-col items-center justify-center
@@ -15,7 +15,7 @@ export default function MyDivMain() {
       <div className="w-full flex justify-start p-5">
       n={n}, n2={n2}
       </div>
-      <MyDiv n={n} setN={setN} />
+      <MyDiv />
     </div>
   )
 }
