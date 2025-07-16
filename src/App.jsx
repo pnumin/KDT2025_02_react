@@ -18,6 +18,7 @@ import Festival from './13/Festival'
 import Fcst from './15/Fcst'
 import FcstList from './15/FcstList'
 // import RouteMain from './14/RouteMain'
+import MyDivMain from './16/MyDivMain'
 
 import AppNav from './AppNav'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -52,6 +53,7 @@ function App() {
           <Route path='/festival' element={<Festival />} />
           <Route path='/fcst' element={<Fcst />} />
           <Route path='/fcstlist' element={<FcstList />} />
+          <Route path='/mydiv' element={<MyDivMain />} />
         </Routes>
       </main>
       <footer className="w-full min-h-20
