@@ -1,16 +1,21 @@
 import kind from "./kind.json"
 import zcode from "./zcode.json"
 import zscode from "./zscode.json"
+import stat from "./stat.json"
 
 import TailSelect from "../component/TailSelect"
 import TailButton from "../component/TailButton"
+import TailCard from "../component/TailCard"
+import TailPageNation from "../component/TailPageNation"
 
 import { useRef, useState, useEffect } from "react"
 export default function ChargerInfo() {
   //동 지역 변수
   const [zs, SetZs]  = useState([]);
   const [tdata, setTdata] = useState([]) ;
-  const [totalCount, setTotalCount] = useState(0) ;
+  let totalCount = 0 ;
+  const [currentPage, setCurrentPage] = useState(1) ;
+  const [totalPage, setTotalPage] = useState(1) ;
   const perPage = 12 ;
 
   //select box ref 
@@ -56,7 +61,10 @@ export default function ChargerInfo() {
     const resp = await fetch(url) ;
     const data = await resp.json() ; 
 
-    setTotalCount(data.totalCount);
+    console.log("totalCount:" , data.totalCount)
+    totalCount = data.totalCount;
+    setTotalPage(Math.ceil(totalCount / perPage));
+    setCurrentPage(cpage)
     setTdata(data.items.item) ;
   }
 
@@ -81,11 +89,7 @@ export default function ChargerInfo() {
   } 
 
   //useEffect 
-  useEffect(() => {
-    console.log("totalCount" , totalCount)
-    console.log("tdata", tdata)
-  } , [totalCount, tdata]);
-
+  
   return (
     <div className="w-full flex flex-col">
       <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-4">
@@ -107,6 +111,24 @@ export default function ChargerInfo() {
         <TailButton caption = "검색"
                     color = "blue"
                     onHandle ={() => getDataFetch(1)}/>
+      </div>
+      <div className="w-full grid grid-1 lg:grid-cols-4 gap-4 mt-5">
+        {
+          tdata.map(item => <TailCard key={item.statId + item.chgerId}  
+                                      title={item.statNm}
+                                      subtitle={`${item.bnm}(${item.addr},${item.busiCall})`} 
+                                      content ={`${item.useTime}
+                                      ${stat[item.stat] == undefined ? '' : ','+ stat[item.stat] }
+                                      ,주차료${item.parkingFree == 'Y'? '무료' : '유료'}
+                                      ,충전방식${item.method}
+                                      ,충전용량 ${item.output}kW`}
+                                      />)
+        }
+      </div>
+      <div className="w-full mt-5">
+        <TailPageNation currentPage= {currentPage}
+                        totalPage={totalPage} 
+                        onPageChange ={getDataFetch} />
       </div>
     </div>
   )
